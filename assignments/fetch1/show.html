@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+            background-color: rgb(34, 33, 33);
+            color: white;
+        }
+        .main{
+            width:80%;
+            height:600px;
+            margin-left: 10%;
+            margin-top: 1%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 7px;
+            display: flex;
+        }
+        .main>img{
+            width: 300px;
+            height: 450px;
+            margin-top: 5%;
+            margin-left: 8%;
+            border-radius: 9px;
+        }
+        .m1{
+            width:40%;
+            height: 95%;
+            font-size: 30px;
+            margin-left:10%;
+            margin-top: 1%;
+
+        }
+        .l1{
+            margin-top: 18%;
+            text-align: center;
+        }
+       
+</style>
+<body>
+    <!-- <div class="main">
+
+    <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="">
+
+    <div class="m1">
+        <p class="l1">Avengers end game tho ayipodhi</p>
+        <div class="l1">Avengers end game tho ayipodhi</div>
+        <p class="l1">Avengers end game tho ayipodhi</p>
+    </div>
+    
+
+    </div> -->
+   
+</body>
+</html>
+<script>
+    var obj=JSON.parse(localStorage.getItem("list"))
+    console.log(obj)
+    let main=document.createElement("div");
+    main.setAttribute("class","main");
+
+    let img=document.createElement("img");
+    img.src=`${obj.post}`;
+
+    let m1=document.createElement("div");
+    m1.setAttribute("class","m1");
+
+    let title=document.createElement("p");
+    title.setAttribute("class","l1");
+    title.innerHTML=obj.name;
+
+    let type=document.createElement("div");
+    type.setAttribute("class","l1");
+    type.innerHTML=`Type:- ${obj.typ}`;
+
+    let year=document.createElement("p");
+    year.setAttribute("class","l1");
+    year.innerHTML=`Year:- ${obj.sam}`
+
+    m1.append(title,type,year);
+
+    main.append(img,m1)
+
+    document.querySelector("body").append(main)
+
+
+</script>

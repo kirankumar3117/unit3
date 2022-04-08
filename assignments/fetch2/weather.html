@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: rgb(241, 234, 234);
+            font-family: sans-serif;
+        }
+        .input{
+            color: rgb(209, 203, 203);
+            border:0;
+            width:25%;
+            height: 40px;
+            background-color: rgb(73, 46, 46);
+            font-size: 20px;
+            margin-left: 10%;
+            border-radius: 3px;
+        }
+        .search{
+           
+            
+            color: rgb(189, 184, 184);
+            font-size:26px;
+            border:0;
+            position: relative;left:0em;
+        }
+        .box{
+            display: flex;
+            margin-top: 1em;
+
+        }
+        .left{
+            width:26%;
+            margin-left: 10%;
+            height: 370px;
+            /* border: 1px solid white; */
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            background-color: rgb(128, 170, 159);
+            border-radius: 20px;
+        }
+        .right{
+            width:26%;
+            margin-left: 10%;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            background-color: white;
+            border-radius: 20px;
+        }
+        .last{
+            width:80%;
+            margin-left: 10%;
+            /* border:1px solid orangered;
+            */
+            height: 230px;
+        }
+        .name{
+
+            font-size: 25px;
+            background-color: white;
+            position: relative;left:-2em;
+            color: orangered;
+        }
+        .left>p{
+            background-color: rgb(128, 170, 159);
+            /* margin-left: 10%; */
+           margin-left: 20%;
+           margin-top: -0.1em;
+        }
+        img{
+           
+            margin-left: 35%;
+            background-color: aquamarine;
+        }
+        .iframe{
+            width:100%;
+            height:100%;
+            border-radius: 20px;
+        }
+       
+        /* .sun1{
+            width:60px;
+            height:60px;
+            border-radius: 14px;
+            margin-left: 6em;
+            margin-top: 1em; */
+           
+            /* background-image: url("https://openweathermap.org/img/wn/50n@2x.png");
+            background-size: 70px;
+            background-position: 0.4em; */
+        /* }
+        .sun1>img{
+            size: 70px;
+            border-radius: 30%;
+
+        }
+         .sun{
+            width:100px;
+            height:100px;
+            background-color: #FDB813;
+            border-radius: 50%;
+            position: relative;top: -1.9em;left:2em; */
+            /* margin-left: 10%;
+            margin-top: 15%;
+            position: absolute;
+            margin-top:3em;
+            margin-left: 4em; */
+        /* } */
+    </style>
+</head>
+<body>
+    <div class="text">
+        <input type="text" class="input" >
+        <button class="search" onclick="getweather()"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="box">
+        <div class="left">
+           
+            <div class="hello"></div>
+           
+
+        </div>
+        <div class="right">
+         <!-- <iframe width="100%" height="100%" id="gmap_canvas"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
+        </div>
+
+    </div>
+    <div class="last"></div>
+</body>
+</html>
+<script>
+    let left=document.querySelector(".left");
+let right=document.querySelector(".right")
+
+async function getweather(){
+    try{
+
+      
+        let name=document.querySelector(".input").value
+    let res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=efced065c81cf044eee3a660ac3205de&units=metric`)
+        let data=await res.json()
+        
+      console.log(data)
+
+    //   let naxt=await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=vijayawada&cnt=10&appid=efced065c81cf044eee3a660ac3205de`)
+
+    //   let next=await naxt.json()
+
+    //   console.log(next)
+
+        check(data)
+      
+   
+    }
+    catch(err){
+      console.log("err:",err)
+    }
+
+
+
+
+
+
+
+}
+
+function check(data){
+
+
+    left.innerHTML=null;
+
+    right.innerHTML=null;
+
+    let name=document.createElement("p")
+
+    name.setAttribute("class","name");
+
+    name.innerHTML=data.name;
+    
+
+    let weather=document.createElement("p")
+
+    weather.innerHTML=data.weather[0].main;
+
+    let temp=document.createElement("p");
+
+    temp.innerHTML=`Temperature:-${data.main.temp}&#8451`;
+
+    let max_temp=document.createElement("p");
+
+    max_temp.innerHTML=`Max_Temp:-${data.main.temp_max}&#8451;`;
+
+    let min_temp=document.createElement("p");
+
+    min_temp.innerHTML=`Min_Temp:-${data.main.temp_min}&#8451;`;
+
+    let humidity=document.createElement("p");
+
+    humidity.innerHTML=`Humidity:-${data.main.humidity}`
+
+    let pressure=document.createElement("p");
+
+    pressure.innerHTML=`Pressure:-${data.main.pressure}`
+
+    let img=document.createElement("img");
+
+     img.src=`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+
+    img.style.backgroundColor="rgb(128, 170, 159)"
+
+    // let sun=document.querySelector(".sun").innerHTML=img;
+
+    // sun.append(img)
+
+    
+
+    left.append(img,name,weather,temp,max_temp,min_temp,humidity,pressure)
+
+   
+    
+    let map=document.createElement("iframe");
+
+    map.setAttribute("class","iframe")
+
+    map.src=`https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+
+
+      
+
+    right.append(map);
+    
+   
+}
+
+
+
+// async function getdaily(){
+// try{
+//     let m=await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=vijayawada&cnt=7&appid=3be2f404b4c4952d5a1b5ec4a26ae782`)
+
+//     let n=await m.json()
+//     console.log(n);
+
+// }
+
+// catch(err){
+//     console.log("err:",err)
+// }
+ 
+// }
+
+// getdaily()
+
+
+</script>
+
+
