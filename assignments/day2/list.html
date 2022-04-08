@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* th,tr{
+            border: 1px solid black;
+            padding: 10px;
+        } */
+        th,td{
+            border:1px solid saddlebrown;
+            padding:9px;
+            padding-left: 20px;
+            text-align: center;
+        }
+        .box{
+            margin-left: 16%;
+            text-align: center;
+        }
+        .p{
+            margin-left: 16%;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p class="p">STUDENT DETAILS..</p>
+    <div class="box">
+
+        <table >
+            <thead>
+                <tr>
+                   <th>Name</th>
+                   <th>Number</th>
+                   <th>city</th>
+                </tr>
+            </thead>
+           
+            <tbody>
+                <!-- <tr>
+                    <td>kjwrgaerghe</td>
+                    <td>kjhgwu</td>
+                    <td>kjhgwu</td>
+                    <td>kjhgwu</td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+
+var m=JSON.parse(localStorage.getItem("details"));
+console.log(m)
+console.log(m[name])
+
+m.map(function(ele){
+    var tr=document.createElement("tr");
+    var td1=document.createElement("td")
+    var td2=document.createElement("td")
+    var td3=document.createElement("td");
+
+    td1.innerHTML=ele.name;
+    td2.innerHTML="+91"+ele.number;
+    td3.innerHTML=ele.city;
+    tr.append(td1,td2,td3)
+    document.querySelector("tbody").append(tr)
+})
+
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        .box{
+            width:20%;
+            margin-left:35%;
+            margin-top: 5%;
+            height:300px;
+            border:7px solid orangered
+        }
+       .form{
+           margin-left: 5%;
+           margin-top: 5%;
+       }
+        .form>input{
+            width:90%;
+            border:1px solid rgb(136, 130, 130);
+            height:25px;
+            margin-bottom: 7%;
+            margin-top: 2%;
+
+        }
+        #submit{
+            width:92%;
+            /* margin-left: 15%; */
+            height: 35px;
+            background-color: orangered;
+            color: black;
+            border: 0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <form class="form">
+        <label>Name </label>
+        <input type="text" class="name">
+        <label>Mobile Number</label>
+        <input type="text" maxlength="10" class="number">
+        <label>City</label>
+        <input type="text" class="city">
+        <input type="submit" id="submit">
+    </form>
+</div>
+</body>
+</html>
+
+<script>
+    var arr=JSON.parse(localStorage.getItem("details")) || [];
+    document.querySelector("form").addEventListener("submit",sub)
+    function sub(event){
+        event.preventDefault();
+        var name=document.querySelector(".name").value;
+        var num=document.querySelector(".number").value;
+        var city=document.querySelector(".city").value;
+        function details(){
+            this.name=name;
+            this.number=num;
+            this.city=city;
+        }
+        if(name=="" || num=="" || city==""){
+            alert('please enter all details')
+        }
+        else{
+            document.querySelector("#submit").style.backgroundColor="green"
+            document.querySelector("#submit").value="Submited"
+              arr.push(new details())
+          
+           localStorage.setItem("details",JSON.stringify(arr));
+           window.location.href="index.html"
+        }
+      
+    }
+</script>

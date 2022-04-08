@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bo{
+            margin-left: 20%;
+        }
+        .but{
+            height: 30px;
+            background-color: orangered;
+            color: black;
+        }
+        .box{
+            margin-left: 20%;
+            font-family: sans-serif;
+        
+        }
+        .change{
+            font-weight: bold;
+        }
+        .change1{
+            font-weight: bold;
+        }
+        .change2{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="bo">lets change our occupation 
+        <button class="but">submit</button>
+    </div>
+    <div class="box">
+        <p>Amar is a ,<span class="change">singer</span> lives in Goa.</p>
+        <p>Akbar is a ,<span class="change1">Chef</span> lives in Mumbai.</p>
+        <p>Anthony is a ,<span class="change2">Magician</span> lives in Kashmir.</p>
+    </div>
+</body>
+</html>
+<script>
+    var arr=["singer","chef","Magician"]
+    var obj={
+        amar:{
+            name:'Amar',
+            occ:'singer',
+            live:'Goa'
+        },
+        akbar:{
+            name:'Akbar',
+            occ:'Chef',
+            live:'Mumbai'
+        },
+        anthony:{
+            name:'Anthony',
+            occ:'Magician',
+            live:'Kashmir'
+        },
+        occu(){
+            console.log(`occupation ${this.occ}`)
+        }
+    }
+
+    obj.occu.call(amar);
+    function change(n,o,l){
+    this.name=n;
+    this.occ=o;
+    this.live=l;
+    }
+    
+   
+    var m=arr.length;
+    document.querySelector(".but").addEventListener("click",myfun);
+
+    function myfun(){
+        document.querySelector(".change").textContent=arr[Math.floor(Math.random()*m)]
+        document.querySelector(".change1").textContent=arr[Math.floor(Math.random()*m)]
+        document.querySelector(".change2").textContent=arr[Math.floor(Math.random()*m)]
+    }
+    console.log((arr[Math.floor(Math.random()*m)]))
+    console.log(Math.floor(Math.random()*m));
+
+    
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .but{
+            border:1px solid black;
+            height: 50px;
+            background-color: orangered;
+            margin-left:46%;
+        }
+        .box{
+            width:50%;
+            height:400px;
+            margin-left:25%;
+            margin-top: 2em;
+            display: flex;
+        }
+        .dies1{
+            width:120px;height:120px;border-radius: 7px;margin-top: 3em;margin-left: 15%;
+            text-align: center;line-height:3em;font-size: 35px;background-color: rgb(0, 255, 234);
+            visibility: hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .dies2{
+            width:120px;height:120px;border-radius: 7px;margin-top: 3em;margin-left: 30%;
+            text-align: center;line-height:7em; text-align: center;line-height:3em;font-size: 35px;background-color: rgb(0, 255, 234);
+            visibility: hidden;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <button class="but" onclick="check()">Through dice</button>
+    <div class="box">
+        <div class="dies1">
+            
+        </div>
+        <div class="dies2">
+            
+        </div>
+    </div>
+</body>
+</html>
+<script>
+   
+    function check(){
+        var m=[1,2,3,4,5,6,7]
+   
+         var l=(Math.floor(Math.random()*m.length));
+         var p=(Math.floor(Math.random()*m.length));
+         
+    console.log(l,p)
+    if(l==0 || p==0){
+        window.location.href="index.html"
+        document.querySelector(".dies1").innerHTML=(Math.floor(Math.random()*m.length));
+        document.querySelector(".dies1").style.visibility="visible";
+        document.querySelector(".dies2").innerHTML=(Math.floor(Math.random()*m.length));
+        document.querySelector(".dies2").style.visibility="visible";
+    }
+    else{
+        if(l==6){
+            document.querySelector(".dies1").style.color="green";
+            document.querySelector(".dies1").innerHTML=l;
+            document.querySelector(".dies1").style.visibility="visible";
+        }
+        else if(l==1){
+            
+            document.querySelector(".dies1").style.color="yellow";
+            document.querySelector(".dies1").innerHTML=l;
+            document.querySelector(".dies1").style.visibility="visible";
+        }
+        else{
+            
+            
+            document.querySelector(".dies1").style.color="red";
+            document.querySelector(".dies1").innerHTML=l;
+            document.querySelector(".dies1").style.visibility="visible";
+
+        
+        }
+        if(p==6){
+            document.querySelector(".dies2").style.color="green";
+            document.querySelector(".dies2").innerHTML=p;
+            document.querySelector(".dies2").style.visibility="visible";
+        }
+        else if(p==1){
+            
+            document.querySelector(".dies2").style.color="yellow";
+            document.querySelector(".dies2").innerHTML=p;
+            document.querySelector(".dies2").style.visibility="visible";
+        }
+        else{
+            
+            
+            document.querySelector(".dies2").style.color="red";
+            document.querySelector(".dies2").innerHTML=p;
+            document.querySelector(".dies2").style.visibility="visible";
+
+        
+        }
+        
+        document.querySelector(".dies2").innerHTML=p;
+    }
+}
+   
+   
+</script>
